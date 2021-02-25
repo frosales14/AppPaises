@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 import { PorRegionComponent } from './pages/por-region/por-region.component';
 import { PorCapitalComponent } from './pages/por-capital/por-capital.component';
 import { VerPaisComponent } from './pages/ver-pais/ver-pais.component';
 import { PorNombreComponent } from './pages/por-nombre/por-nombre.component';
+import { PaisInputComponent } from './pages/components/pais-input/pais-input.component';
+import { PaisTablaComponent } from "./pages/components/pais-tabla/pais-tabla.component";
 
 
 
@@ -12,7 +16,9 @@ import { PorNombreComponent } from './pages/por-nombre/por-nombre.component';
     PorNombreComponent, 
     PorRegionComponent, 
     PorCapitalComponent, 
-    VerPaisComponent
+    VerPaisComponent, 
+    PaisTablaComponent,
+    PaisInputComponent
   ],
   exports: [
     PorNombreComponent, 
@@ -21,7 +27,8 @@ import { PorNombreComponent } from './pages/por-nombre/por-nombre.component';
     VerPaisComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class PaisModule { }

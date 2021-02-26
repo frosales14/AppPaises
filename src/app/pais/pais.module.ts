@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { PorRegionComponent } from './pages/por-region/por-region.component';
 import { PorCapitalComponent } from './pages/por-capital/por-capital.component';
@@ -28,7 +29,8 @@ import { PaisTablaComponent } from "./pages/components/pais-tabla/pais-tabla.com
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ]
 })
 export class PaisModule { }

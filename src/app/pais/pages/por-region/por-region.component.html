@@ -1,26 +1,30 @@
-<h2>Por Region</h2>
-
-<hr>
-
-<div class="row">
-    <div class="col">
-        <app-pais-input
-            (onEnter)="buscar( $event )"
-            placeholder = "Buscar Region...">
-        </app-pais-input>
+<div class="animate__animated animate__fadeInRight animate__faster">
+    <h2>Buscar Por Region: {{regionActiva | titlecase}} </h2>
+    <hr>
+    
+    <h3>Seleccione una region</h3>
+    
+    <!-- Diferentes maneras de poner clases de manera condicional 
+        1. [class.btn-primary] = 'region === regionActiva'
+        2. [ngClass]="{ la unica desventaja es que hace dos evaluaciones al mismo tiempo
+                    'btn-outline-primary': regionActiva !== region, 
+                    'btn-primary': regionActiva === region
+                }"-->
+    <div class="row ">
+        <div class="col">
+            <button
+                *ngFor  = "let region of regiones"
+                class   = "me-2 mb-2 animate__animated animate__headShake animate__delay-1s"
+                [class] = "getClassCSS( region )"
+                (click) = "activarRegion( region )">
+                {{region}}
+            </button>
+        </div>
     </div>
 </div>
 
-<div
-    *ngIf="error"
-    class="alert alert-danger">
-    <p>No se encontro nada</p>
-</div>
-
-<hr>
-
-<div class="col">
-    <app-pais-tabla 
-        [paises]='paises'>
-    </app-pais-tabla>
+<div class="row">
+    <div class="col">
+        <app-pais-tabla [paises]='paises' ></app-pais-tabla>
+    </div>
 </div>

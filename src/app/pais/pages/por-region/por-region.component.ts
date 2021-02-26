@@ -10,25 +10,26 @@ import { Country } from '../../interfaces/pais.interface';
 })
 export class PorRegionComponent {
 
-  paises : Country[] = [];
-  termino: string    = ''
-  error  : boolean   = false;
+  regiones    : string[]  = ['africa', 'americas', 'asia', 'europe', 'oceania'];  
+  regionActiva: string    = '';
+  paises      : Country[] = [];
+
 
   constructor(private _paisService: PaisService) { }
 
-  buscar( region: string ){
-    this.termino = region;
-    this.error   = false;
-    
-    this._paisService.buscarRegion( this.termino )
-        .subscribe( region => {
-          this.paises = region
-        },
-        err => {
-          this.paises = [];
-          this.error = true;
-        });
-    
+  getClassCSS( region: string): string{
+    return (region === this.regionActiva)
+              ?'btn btn-primary'
+              :'btn btn-outline-primary';
   }
 
+  activarRegion( region: string ){
+    if(this.regionActiva === region){ return }
+    
+    this.regionActiva = region;
+    this.paises       = [];
+    
+    this._paisService.buscarRegion( region )
+        .subscribe( paises => this.paises = paises);
+  }
 }
